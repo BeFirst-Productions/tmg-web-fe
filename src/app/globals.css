@@ -35,6 +35,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -67,13 +68,16 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
 .shiny-text {
-  color: #ffffffa4; /* Adjust this color to change intensity/style */
-  background:linear-gradient(120deg, #fff0 40%, #fffc 50%, #fff0 60%);
+  color: #ffffffa4;
+  /* Adjust this color to change intensity/style */
+  background: linear-gradient(120deg, #fff0 40%, #fffc 50%, #fff0 60%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -85,6 +89,7 @@ body {
   0% {
     background-position: 100%;
   }
+
   100% {
     background-position: -100%;
   }
@@ -96,14 +101,19 @@ body {
 
 /* Hide scrollbar but keep scroll functionality */
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
+
 /* Profile card */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 
 }
+
 .pc-card-wrapper {
   perspective: 500px;
   transform: translate3d(0, 0, 0.1px);
@@ -155,23 +165,23 @@ body {
     50% 50%,
     0 0;
   background-image:
-    radial-gradient(
-      farthest-side circle at var(--pointer-x) var(--pointer-y),
+    radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),
       hsla(266, 100%, 90%, var(--card-opacity)) 4%,
       hsla(266, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%,
       hsla(266, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%,
-      hsla(266, 0%, 60%, 0) 100%
-    ),
+      hsla(266, 0%, 60%, 0) 100%),
     radial-gradient(35% 52% at 55% 20%, #00ffaac4 0%, #073aff00 100%),
     radial-gradient(100% 100% at 50% 50%, #00c1ffff 1%, #073aff00 76%),
     conic-gradient(from 124deg at 50% 50%, #c137ffff 0%, #07c6ffff 40%, #07c6ffff 60%, #c137ffff 100%);
   overflow: hidden;
 }
+
 @media (min-width: 1024px) and (max-width: 1440px) {
   .pc-card {
     height: 40svh;
   }
 }
+
 .pc-card:hover,
 .pc-card.active {
   transition: none;
@@ -216,31 +226,25 @@ body {
   background-size: cover;
   background-position: center;
   background-image:
-    repeating-linear-gradient(
-      0deg,
+    repeating-linear-gradient(0deg,
       var(--sunpillar-clr-1) calc(var(--space) * 1),
       var(--sunpillar-clr-2) calc(var(--space) * 2),
       var(--sunpillar-clr-3) calc(var(--space) * 3),
       var(--sunpillar-clr-4) calc(var(--space) * 4),
       var(--sunpillar-clr-5) calc(var(--space) * 5),
       var(--sunpillar-clr-6) calc(var(--space) * 6),
-      var(--sunpillar-clr-1) calc(var(--space) * 7)
-    ),
-    repeating-linear-gradient(
-      var(--angle),
+      var(--sunpillar-clr-1) calc(var(--space) * 7)),
+    repeating-linear-gradient(var(--angle),
       #0e152e 0%,
       hsl(180, 10%, 60%) 3.8%,
       hsl(180, 29%, 66%) 4.5%,
       hsl(180, 10%, 60%) 5.2%,
       #0e152e 10%,
-      #0e152e 12%
-    ),
-    radial-gradient(
-      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+      #0e152e 12%),
+    radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y),
       hsla(0, 0%, 0%, 0.1) 12%,
       hsla(0, 0%, 0%, 0.15) 20%,
-      hsla(0, 0%, 0%, 0.25) 120%
-    );
+      hsla(0, 0%, 0%, 0.25) 120%);
   background-position:
     0 var(--background-y),
     var(--background-x) var(--background-y),
@@ -277,15 +281,13 @@ body {
 
 .pc-shine::before {
   background-image:
-    linear-gradient(
-      45deg,
+    linear-gradient(45deg,
       var(--sunpillar-4),
       var(--sunpillar-5),
       var(--sunpillar-6),
       var(--sunpillar-1),
       var(--sunpillar-2),
-      var(--sunpillar-3)
-    ),
+      var(--sunpillar-3)),
     radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(0, 0%, 70%) 0%, hsla(0, 0%, 30%, 0.2) 90%),
     var(--grain);
   background-size:
@@ -297,8 +299,7 @@ body {
     center,
     calc(var(--pointer-x) * 0.01) calc(var(--pointer-y) * 0.01);
   background-blend-mode: color-dodge;
-  filter: brightness(calc(2 - var(--pointer-from-center))) contrast(calc(var(--pointer-from-center) + 2))
-    saturate(calc(0.5 + var(--pointer-from-center)));
+  filter: brightness(calc(2 - var(--pointer-from-center))) contrast(calc(var(--pointer-from-center) + 2)) saturate(calc(0.5 + var(--pointer-from-center)));
   mix-blend-mode: luminosity;
 }
 
@@ -347,8 +348,10 @@ body {
   position: absolute;
   inset: 0;
   z-index: 1;
-  backdrop-filter: blur(0); /* remove the blur if not needed */
-  mask: none; /* remove the black mask */
+  backdrop-filter: blur(0);
+  /* remove the blur if not needed */
+  mask: none;
+  /* remove the black mask */
   pointer-events: none;
 }
 
@@ -401,7 +404,7 @@ body {
 .pc-handle {
   font-size: 14px;
   font-weight: 500;
-  color:#941D43; 
+  color: #941D43;
   line-height: 1;
 }
 
@@ -434,11 +437,9 @@ body {
   overflow: hidden;
   text-align: center;
   position: relative;
-  transform: translate3d(
-    calc(var(--pointer-from-left) * -6px + 3px),
-    calc(var(--pointer-from-top) * -6px + 3px),
-    0.1px
-  ) !important;
+  transform: translate3d(calc(var(--pointer-from-left) * -6px + 3px),
+      calc(var(--pointer-from-top) * -6px + 3px),
+      0.1px) !important;
   z-index: 5;
   /* mix-blend-mode: luminosity; */
 }
@@ -647,6 +648,7 @@ body {
     border-radius: 50px;
   }
 }
+
 /* ////////////////////// */
 
 
@@ -702,7 +704,7 @@ body {
   background-color: #49051E;
   border-radius: 50%;
   border: 2px solid #fff;
-  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   opacity: 0;
 }
 
@@ -725,34 +727,90 @@ body {
 
 /* Draw horizontal line */
 @keyframes drawHorizontal {
-  0% { width: 0; opacity: 0; }
-  20% { opacity: 1; }
-  70% { width: 9.5rem; opacity: 1; }
-  100% { width: 9.5rem; opacity: 0; }
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  70% {
+    width: 9.5rem;
+    opacity: 1;
+  }
+
+  100% {
+    width: 9.5rem;
+    opacity: 0;
+  }
 }
 
 /* Draw vertical line */
 @keyframes drawVertical {
-  0% { height: 0; opacity: 0; }
-  20% { opacity: 1; }
-  70% { height: 9.5rem; opacity: 1; }
-  100% { height: 9.5rem; opacity: 0; }
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  70% {
+    height: 9.5rem;
+    opacity: 1;
+  }
+
+  100% {
+    height: 9.5rem;
+    opacity: 0;
+  }
 }
 
 /* Move circle along horizontal line */
 @keyframes moveCircleHorizontal {
-  0% { left: 0.5rem; opacity: 0; }
-  20% { opacity: 1; }
-  70% { left: 9.5rem; opacity: 1; }
-  100% { left: 9.5rem; opacity: 0; }
+  0% {
+    left: 0.5rem;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  70% {
+    left: 9.5rem;
+    opacity: 1;
+  }
+
+  100% {
+    left: 9.5rem;
+    opacity: 0;
+  }
 }
 
 /* Move circle along vertical line */
 @keyframes moveCircleVertical {
-  0% { top: 0.5rem; opacity: 0; }
-  20% { opacity: 1; }
-  70% { top: 9.5rem; opacity: 1; }
-  100% { top: 9.5rem; opacity: 0; }
+  0% {
+    top: 0.5rem;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  70% {
+    top: 9.5rem;
+    opacity: 1;
+  }
+
+  100% {
+    top: 9.5rem;
+    opacity: 0;
+  }
 }
 
 
@@ -769,88 +827,104 @@ body {
 
 
 @keyframes pressDown1 {
+
   30%,
   40%,
   100% {
     transform: translateY(0);
   }
+
   35% {
     transform: translateY(10px);
   }
 }
 
 @keyframes pressDown2 {
+
   70%,
   80%,
   100% {
     transform: translateY(0);
   }
+
   75% {
     transform: translateY(10px);
   }
 }
 
 @keyframes pressDown3 {
+
   30%,
   40%,
   100% {
     transform: translateY(0);
   }
+
   35% {
     transform: translateY(10px);
   }
 }
 
 @keyframes pressDown4 {
+
   40%,
   50%,
   100% {
     transform: translateY(0);
   }
+
   45% {
     transform: translateY(10px);
   }
 }
 
 @keyframes pressDown5 {
+
   20%,
   30%,
   100% {
     transform: translateY(0);
   }
+
   25% {
     transform: translateY(10px);
   }
 }
 
 @keyframes pressDown6 {
+
   60%,
   70%,
   100% {
     transform: translateY(0);
   }
+
   65% {
     transform: translateY(10px);
   }
 }
 
 @keyframes pressDown7 {
+
   10%,
   20%,
   100% {
     transform: translateY(0);
   }
+
   15% {
     transform: translateY(10px);
   }
 }
 
 @keyframes pressDown8 {
+
   35%,
   45%,
   100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(10px);
   }
@@ -922,6 +996,7 @@ a:nth-child(2):hover {
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 200% 50%;
   }
@@ -937,7 +1012,8 @@ a:nth-child(2):hover {
   content: '';
   position: absolute;
   inset: 0;
-  padding: 2px; /* border thickness */
+  padding: 2px;
+  /* border thickness */
   border-radius: inherit;
   background: linear-gradient(90deg, transparent, #ff77aa, transparent);
   background-size: 200% 200%;
@@ -960,4 +1036,166 @@ a:nth-child(2):hover {
   left: 0;
   right: 0;
   padding: 0;
+}
+
+
+/* license section */
+
+
+.container .card .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  
+  /* border-top-left-radius: 20px;
+border-top-right-radius: 20px; */
+}
+
+.container .card .icon .bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* keeps the image proportionally scaled */
+  display: block;
+}
+
+.container .card .icon .fa {
+
+  position: absolute;
+
+  top: 50%;
+
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  font-size: 80px;
+
+  color: #fff;
+
+
+}
+
+.container .card .slide {
+
+  width: 280px;
+
+  height: 280px;
+
+  transition: 0.5s;
+  background-color: #941D43;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+}
+
+.container .card .slide.slide1 {
+
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 1;
+
+  transition: .7s;
+
+  transform: translateY(100px);
+
+}
+
+.container .card:hover .slide.slide1 {
+
+  transform: translateY(0px);
+
+}
+
+.container .card .slide.slide2 {
+
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  transition: .8s;
+
+  transform: translateY(-100px);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+}
+
+.container .card:hover .slide.slide2 {
+
+  transform: translateY(0);
+
+}
+
+.container .card .slide.slide2::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 30px;
+
+  height: 4px;
+
+  bottom: 15px;
+
+  left: 50%;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+  background: #ffffff;
+
+}
+
+.container .card .slide.slide2 .content p {
+
+  margin: 0 0 0 0;
+  height: 150px;
+  font-size: 14px;
+  padding: 2px;
+  text-align: start;
+
+  color: #ffffff;
+
+}
+
+.container .card .slide.slide2 .content h3 {
+
+  margin: 20px 0 0 0;
+
+  padding: 0;
+
+  font-size: 24px;
+
+  text-align: center;
+
+  color: #ffffff;
+
+}
+/* Slide1 normal hover is already in your CSS */
+.container .card:hover .slide.slide1 {
+  transform: translateY(0px);
+}
+
+/* For automatic open on scroll */
+.container .card .slide.slide1.auto-open {
+  transform: translateY(0px);
 }

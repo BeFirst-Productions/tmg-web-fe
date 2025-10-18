@@ -22,18 +22,20 @@ const AboutUsSection = () => {
   };
 
   return (
-    <div className="relative px-4 sm:px-6 lg:px-0 py-8 lg:py-16">
+    <div className="relative px-4 sm:px-6 lg:px-0 py-8 lg:py-16 mb-10 overflow-hidden">
       {/* Decorative Left Element */}
-      <div className="absolute hidden lg:block left-0 w-80 h-80 opacity-100  bottom-0">
-        <img
-          src="/assets/images/about/left_element.png"
-          alt="Professional woman with tablet"
-          className="w-1/3 2xl:w-60 h-auto rounded-2xl "
-        />
-      </div>
+     {/* Decorative Left Element (fixed for all screens) */}
+    <div className="absolute  left-0 bottom-0 w-80 h-80 opacity-100 z-0">
+    <img
+      src="/assets/images/about/left_element.png"
+      alt="Professional woman with tablet"
+      className="w-full h-full object-contain opacity-80"
+    />
+  </div>
+
 
       <Container>
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+        <div className="relative z-10 flex flex-col lg:flex-row gap-12 items-center">
           {/* Left Content Section */}
           
           <div className="lg:w-1/2">
@@ -54,7 +56,7 @@ const AboutUsSection = () => {
           </div>
 
           {/* Right Image Section */}
-          <div className="lg:w-1/2 relative">
+          <div className="lg:w-1/2 relative z-10">
             {/* Corner Design Container */}
             <div className="absolute -top-4 -left-4 w-72 h-52 pointer-events-none">
               {/* Horizontal Line */}

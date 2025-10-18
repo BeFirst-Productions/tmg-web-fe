@@ -2,6 +2,7 @@ import AboutSection from "@/components/about/AboutSection";
 import WhereAvailableSection from "@/components/branches/Branches";
 import BusinessDestination from "@/components/businessSection/BusinessDestination";
 import BusinessSection from "@/components/businessSection/businessSection";
+import { HeroAboutScrollTransition } from "@/components/common/HeroAboutScrollTransition";
 import GetInTouch from "@/components/contact/ContactSection";
 import FAQSection from "@/components/faqs/FaqSection";
 import Footer from "@/components/footer/Footer";
@@ -24,6 +25,7 @@ const page = () => {
         <Navbar />
         <HeroSection />
         <AboutSection/>
+        {/* <HeroAboutScrollTransition/> */}
         <ImageSection/>
         <BusinessSection/>
         <ServicesSection/>

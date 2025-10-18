@@ -1,13 +1,43 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { BusinessSetupPackages } from "../BusinessSetupPackages/BusinessSetupPackages";
-import { LicenseCard } from "./LicenseCard";
 import { Container } from "../layout/Container";
 import { licenseCategories } from "../data/LicenseCategories";
 
 const LicenseSetupPage = () => {
+  const firstCardRef = useRef(null);
+
+  // Track which card is hovered
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // Auto-open first card when it comes into view
+  useEffect(() => {
+    const firstCard = firstCardRef.current;
+    if (!firstCard) return;
+
+    const slide1 = firstCard.querySelector(".slide1");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            slide1?.classList.add("auto-open");
+            setTimeout(() => {
+              slide1?.classList.remove("auto-open");
+            }, 1000);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(firstCard);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white relative overflow-hidden py-4 md:py-8">
       <div className="absolute top-0 right-0 w-64 h-64 bg-amber-200 rounded-full blur-3xl opacity-30"></div>
@@ -20,7 +50,7 @@ const LicenseSetupPage = () => {
           src="/assets/images/category/right_element.png"
           alt="Professional woman with tablet"
           className="w-full h-auto rounded-2xl"
-        />{" "}
+        />
       </div>
 
       <Container>
@@ -38,39 +68,59 @@ const LicenseSetupPage = () => {
               Rorem ipsum dolor sit amet, consectetur adipiscing elit
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 lg:mb-52">
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-items-center gap-6 mb-16 lg:mb-52">
             {licenseCategories.map((category, index) => (
-              <LicenseCard
+              <div
                 key={index}
-                title={category.title}
-                image={category.image}
-                delay={index * 0.1}
-                description={category.description}
-              />
+                className="container flex justify-center"
+                ref={index === 0 ? firstCardRef : null} // Only first card
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div className="card relative">
+                  {/* Slide1: Image */}
+                  <div
+                    className={`slide slide1 ${
+                      hoveredIndex === index ? "hovered" : ""
+                    }`}
+                  >
+                    <div className="content">
+                      <div className="icon">
+                        <img
+                          src={category.image}
+                          alt="Card Image"
+                          className="bg-image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Slide2: Description + Title/Button */}
+                  <div className="slide slide2">
+                    <div className="content flex flex-col justify-between items-center ">
+                      <p>{category.description}</p>
+
+                      {/* Hide title when hovered */}
+                      {hoveredIndex !== index && <h3 cla>{category.title}</h3>}
+
+                      {/* Show button only on hover */}
+                      {hoveredIndex === index && (
+                      <div className="">
+                          <button className="mt-4 bg-white text-[#941D43] font-bold py-2 px-4 rounded">
+                          Learn More
+                        </button>
+                      </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
-          {/* </Container> */}
 
-          {/* <div className="w-full ">
-  <div className="flex">
-    <div className="w-1/2 lg:w-2/3"></div>
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
-      className="w-[412px] lg:w-[412px]"
-    >
-      <img 
-        src="/assets/images/category/right_element.png" 
-        alt="License Information" 
-        className="w-full h-64 lg:h-80 object-cover"
-      />
-    </motion.div>
-  </div>
-</div> */}
-
-          {/* <Container> */}
-
+          {/* Business Setup Packages Section */}
           <BusinessSetupPackages />
         </div>
       </Container>

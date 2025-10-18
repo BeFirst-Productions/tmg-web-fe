@@ -18,7 +18,7 @@ const BusinessSection = () => {
     {
       id: 1,
       title: 'FREEZONE',
-      image: '/assets/images/businessSection/business01.png',
+      image: '/assets/images/business-section/business01.png',
       color: '#8E8E8E',
       hoverColor: '#49051E',
       description:
@@ -27,7 +27,7 @@ const BusinessSection = () => {
     {
       id: 2,
       title: 'MAINLAND',
-      image: '/assets/images/businessSection/business02.png',
+      image: '/assets/images/business-section/business02.png',
       color: '#FFFFFF',
       hoverColor: '#49051E',
       description:
@@ -36,7 +36,7 @@ const BusinessSection = () => {
     {
       id: 3,
       title: 'OFFSHORE',
-      image: '/assets/images/businessSection/business03.png',
+      image: '/assets/images/business-section/business03.png',
       color: '#49051E',
       hoverColor: '#49051E',
       description:
@@ -64,8 +64,8 @@ const BusinessSection = () => {
   return (
     <motion.div
       ref={sectionRef}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 100 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className="h-auto py-8 lg:py-16 px-4 sm:px-6 lg:px-10"
     >

@@ -1,8 +1,7 @@
 import React from 'react';
 import MainButton from '../button/main-button';
 import { Container } from '../layout/Container';
-import LettersPullUpText from '../text/LettersPullUpText';
-import Image from 'next/image'; // if using Next.js, optional
+
 
 const ServicesSection = () => {
   const leftServices = [
