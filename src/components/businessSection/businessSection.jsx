@@ -159,39 +159,35 @@ const BusinessSection = () => {
                       className={`relative overflow-hidden transition-all duration-700 ease-out rounded-2xl shadow-2xl transform group-hover:scale-[1.03] border-2 border-opacity-20 backdrop-blur-sm
                       ${getBorderColor(index, rectangle)}
                       h-16 sm:h-[260px] lg:h-[400px]
-                      ${
-                        activeIndex === index
+                      ${activeIndex === index
                           ? "sm:w-[380px] lg:w-[500px] h-48 sm:h-[260px] lg:h-[400px]"
                           : "sm:w-20 lg:w-28 h-16 sm:h-[260px] lg:h-[400px]"
-                      }`}
+                        }`}
                       style={{
                         background: getRectangleColor(index, rectangle),
                       }}
                     >
                       {/* Collapsed Text */}
                       <div
-                        className={`absolute inset-0 flex items-center justify-center transition-all duration-300 z-10 ${
-                          activeIndex === index
-                            ? "opacity-0 scale-90"
-                            : "opacity-100 scale-100"
-                        }`}
+                        className={`absolute inset-0 flex items-center justify-center transition-all duration-300 z-10 ${activeIndex === index
+                          ? "opacity-0 scale-90"
+                          : "opacity-100 scale-100"
+                          }`}
                       >
                         <div className="text-center">
                           <span
-                            className={`font-bold text-xl sm:text-2xl lg:text-[40px] tracking-wider sm:hidden ${
-                              rectangle.id === 2 && index === 1
-                                ? "text-[#49051E]"
-                                : "text-white"
-                            }`}
+                            className={`font-bold text-xl sm:text-2xl lg:text-[40px] tracking-wider sm:hidden ${rectangle.id === 2 && index === 1
+                              ? "text-[#49051E]"
+                              : "text-white"
+                              }`}
                           >
                             {rectangle.title}
                           </span>
                           <span
-                            className={`font-bold text-xl sm:text-2xl lg:text-[40px] tracking-wider hidden sm:inline [writing-mode:vertical-rl] [text-orientation:mixed] ${
-                              rectangle.id === 2 && index === 1
-                                ? "text-[#49051E]"
-                                : "text-white"
-                            }`}
+                            className={`font-bold text-xl sm:text-2xl lg:text-[40px] tracking-wider hidden sm:inline [writing-mode:vertical-rl] [text-orientation:mixed] ${rectangle.id === 2 && index === 1
+                              ? "text-[#49051E]"
+                              : "text-white"
+                              }`}
                           >
                             {rectangle.title}
                           </span>
@@ -200,11 +196,10 @@ const BusinessSection = () => {
 
                       {/* Expanded Image */}
                       <div
-                        className={`absolute w-full h-full inset-0 transition-all duration-700 ${
-                          activeIndex === index
-                            ? "opacity-100 translate-x-0"
-                            : "opacity-0 translate-x-4"
-                        }`}
+                        className={`absolute w-full h-full inset-0 transition-all duration-700 ${activeIndex === index
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 translate-x-4"
+                          }`}
                       >
                         <div className="w-full h-full relative">
                           <Image

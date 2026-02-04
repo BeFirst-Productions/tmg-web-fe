@@ -99,6 +99,43 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+          />
+        </noscript>
+
+        {/* Organization Schema - using standard script for JSON-LD avoidance of next/script issues in head */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(OrganizationSchema),
+          }}
+        />
+      </head>
+
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+
+        <PageWrapper>
+          {children}
+          <InnovativeChatbot heroSectionId="hero-section" />
+          <BottomCTA />
+        </PageWrapper>
+
+        {/* Scripts moved out of head */}
         {GTM && (
           <Script id="gtm-init" strategy="lazyOnload">
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -143,42 +180,8 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
             fbq('track', 'PageView');
           `}
         </Script>
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-          />
-        </noscript>
 
-        {/* Organization Schema */}
-        <Script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(OrganizationSchema),
-          }}
-        />
-      </head>
-
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
-
-        <PageWrapper>
-          {children}
-          <InnovativeChatbot heroSectionId="hero-section" />
-          <BottomCTA />
-        </PageWrapper>
       </body>
-    </html>
+    </html >
   );
 }

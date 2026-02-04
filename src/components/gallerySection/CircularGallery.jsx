@@ -130,10 +130,7 @@ class Media {
         void main() {
           vUv = uv;
           vec3 p = position;
-float waveAmplitude = 0.03;  
-float waveFrequency = 2.5;
-p.z += sin(p.x * waveFrequency + uTime * 1.2) * waveAmplitude;
-p.y += cos(p.x * waveFrequency * 0.5 + uTime * 1.0) * waveAmplitude * 0.25;          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
         }
       `,
       fragment: `
@@ -231,30 +228,30 @@ p.y += cos(p.x * waveFrequency * 0.5 + uTime * 1.0) * waveAmplitude * 0.25;     
       this.isBefore = this.isAfter = false;
     }
   }
-onResize({ screen, viewport } = {}) {
-  if (screen) this.screen = screen;
-  if (viewport) {
-    this.viewport = viewport;
-    if (this.plane.program.uniforms.uViewportSizes) {
-      this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
+  onResize({ screen, viewport } = {}) {
+    if (screen) this.screen = screen;
+    if (viewport) {
+      this.viewport = viewport;
+      if (this.plane.program.uniforms.uViewportSizes) {
+        this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
+      }
     }
+
+    this.scale = this.screen.height / 1500;
+
+    // Responsive width: 700 for small screens, 1200 for large screens
+    const widthMultiplier = this.screen.width < 768 ? 700 : 1100;
+
+    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
+    this.plane.scale.x = (this.viewport.width * (widthMultiplier * this.scale)) / this.screen.width;
+
+    this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
+
+    this.padding = 2;
+    this.width = this.plane.scale.x + this.padding;
+    this.widthTotal = this.width * this.length;
+    this.x = this.width * this.index;
   }
-
-  this.scale = this.screen.height / 1500;
-
-  // Responsive width: 700 for small screens, 1200 for large screens
-  const widthMultiplier = this.screen.width < 768 ? 700 : 1100;
-
-  this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
-  this.plane.scale.x = (this.viewport.width * (widthMultiplier * this.scale)) / this.screen.width;
-
-  this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
-
-  this.padding = 2;
-  this.width = this.plane.scale.x + this.padding;
-  this.widthTotal = this.width * this.length;
-  this.x = this.width * this.index;
-}
 
 }
 

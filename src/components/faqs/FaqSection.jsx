@@ -58,30 +58,19 @@ const FAQSection = () => {
                   key={index}
                   initial={{
                     opacity: 0,
-                    x: isEven ? -100 : 100,
-                    rotateY: isEven ? -15 : 15,
-                    scale: 0.8,
+                    y: 20,
                   }}
                   whileInView={{
                     opacity: 1,
-                    x: 0,
-                    rotateY: 0,
-                    scale: 1,
+                    y: 0,
                   }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{
-                    duration: 0.7,
-                    delay: index * 0.15,
-                    ease: [0.34, 1.56, 0.64, 1],
-                    opacity: { duration: 0.5 },
-                    scale: {
-                      type: "spring",
-                      stiffness: 100,
-                      damping: 15,
-                    },
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    ease: "easeOut",
                   }}
                   className="relative"
-                  style={{ perspective: 1000 }}
                 >
                   <motion.div
                     whileHover={{

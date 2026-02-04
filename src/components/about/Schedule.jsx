@@ -14,7 +14,7 @@ const Schedule = () => {
   const contentCards = [
     {
       id: 1,
-      image: '/assets/images/Uae-national-day-2025.png',
+      image: '/assets/images/Uae-national-day-2025.webp',
       title: 'UAE National Day 2025 holiday',
       description: 'Eid Al Etihad expected on December 2–3, with the chance of an extended long weekend for residents'
     },

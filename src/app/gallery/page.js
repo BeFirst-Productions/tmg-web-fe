@@ -10,7 +10,7 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <div className="w-full h-screen">
+      <div className="w-full min-h-screen">
         <Navbar />
         <BannerSection
           title="Gallery"
@@ -19,7 +19,7 @@ const page = () => {
             { name: "Gallery", path: "/gallery" },
           ]}
         />
-        <Gallery/>
+        <Gallery />
 
         <Footer />
       </div>

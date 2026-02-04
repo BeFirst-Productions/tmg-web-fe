@@ -4,21 +4,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Loader() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Show AFTER first paint
-    const raf = requestAnimationFrame(() => {
-      setVisible(true);
-    });
-
     // Hide quickly (perceived performance)
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 700);
+    }, 2000);
 
     return () => {
-      cancelAnimationFrame(raf);
       clearTimeout(timer);
     };
   }, []);

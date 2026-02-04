@@ -36,7 +36,7 @@ export const metadata = buildMetadata({
   canonicalUrl: seo.canonicalUrl,
   path: "/terms-of-service",
 
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
 });
 
 
